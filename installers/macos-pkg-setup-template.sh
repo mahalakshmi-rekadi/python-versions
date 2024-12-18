@@ -39,10 +39,13 @@ else
 fi
 
 echo "Install Python binaries from prebuilt package"
-sudo installer -pkg $PYTHON_PKG_NAME -target /-verboseR | tee installation_log.txt
+sudo installer -pkg $PYTHON_PKG_NAME -target / | tee installation_log.txt
 
+# Print the installer path
+echo "Installer path: $(grep -o 'destination path.*' installation_log.txt | cut -d ':' -f 2 | tr -d ' ')"
 
-echo "Installer path: /path/to/installed/location"
+# Print the log file content
+cat installation_log.txt
 
 echo "Create hostedtoolcach symlinks (Required for the backward compatibility)"
 echo "Create Python $PYTHON_FULL_VERSION folder"
