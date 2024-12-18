@@ -39,7 +39,7 @@ else
 fi
 
 echo "Install Python binaries from prebuilt package"
-sudo installer -pkg $PYTHON_PKG_NAME -target / | tee installation_log.txt
+sudo /usr/sbin/installer -pkg $PYTHON_PKG_NAME -target / | tee installation_log.txt
 
 # Print the installer path
 echo "Installer path: $(grep -o 'destination path.*' installation_log.txt | cut -d ':' -f 2 | tr -d ' ')"
